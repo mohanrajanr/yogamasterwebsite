@@ -1,0 +1,145 @@
+:root {
+    --primary: #ff477e;
+    --secondary: #ff7096;
+    --bg-start: #ffb5a7;
+    --bg-end: #fcd5ce;
+    --text: #590d22;
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    overflow: hidden; /* prevents scrollbars if the button moves far */
+}
+
+.container {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.step {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.2s, background-color 0.2s;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: var(--secondary);
+    transform: scale(1.05);
+}
+
+.button-group {
+    position: relative;
+    height: 100px; /* Space for the moving button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#noBtn {
+    position: absolute;
+    background-color: #8d99ae;
+}
+
+/* Form inputs */
+input[type="date"], input[type="time"] {
+    padding: 10px;
+    border: 2px solid var(--secondary);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    margin: 10px;
+    color: var(--text);
+    font-family: 'Fredoka', sans-serif;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.option-card {
+    background: white;
+    border: 2px solid var(--bg-start);
+    border-radius: 16px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.option-card.selected {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.next-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.summary {
+    text-align: left;
+    margin-top: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.summary p {
+    margin-bottom: 10px;
+}
+
+.summary strong {
+    color: var(--primary);
+}
