@@ -55,7 +55,7 @@ function render() {
         `;
     } else if (state.step === 1) {
         stepContainer.innerHTML = `
-            <img id="step1Gif" src="https://media.giphy.com/media/qUIm5wu6LAAEQ/giphy.gif" alt="Pleading cat" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
+            <img id="step1Gif" src="https://media.giphy.com/media/11s7Ke7jcNxCHS/giphy.gif" alt="Pleading bear" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
             <h1>Will you go on a date with me? 🥺</h1>
             <div class="button-group" id="btn-group">
                 <button id="yesBtn" onclick="nextStep(1.5)">YES!</button>
