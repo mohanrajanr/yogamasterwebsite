@@ -55,7 +55,7 @@ function render() {
         `;
     } else if (state.step === 1) {
         stepContainer.innerHTML = `
-            <img id="step1Gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHhwcGQ1YmI5bW1weWVhZHJtbTFsM3l2cm4yeGlkbThvMjRkM3k5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qUIm5wu6LAAEQ/giphy.gif" alt="Pleading cat" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
+            <img id="step1Gif" src="https://media.tenor.com/7b2zG5E0PqkAAAAi/cat-pleading.gif" alt="Pleading cat" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
             <h1>Will you go on a date with me? 🥺</h1>
             <div class="button-group" id="btn-group">
                 <button id="yesBtn" onclick="nextStep(1.5)">YES!</button>
@@ -67,7 +67,7 @@ function render() {
         return; // already appended
     } else if (state.step === 1.5) {
         stepContainer.innerHTML = `
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDVtcXZtdTJkZ2lkdmYxbmR0NDF6eWN0MmNweWVjZWV2NmJ2NXJqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Heart cat" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
+            <img src="https://media.tenor.com/ZmWGeN1Wn4AAAAAi/cat-love.gif" alt="Heart cat" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
             <h1>Are you REALLY sure? No takebacks! 💞</h1>
             <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
                 <button onclick="nextStep(2)">YES!</button>
@@ -77,6 +77,7 @@ function render() {
     } else if (state.step === 2) {
         stepContainer.innerHTML = `
             <h1>Yay! 🎉 When are we going?</h1>
+            <p style="margin-bottom: 15px; font-size: 1.1rem;">Select a date and time:</p>
             <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
                 <input type="date" id="dateInput" required>
                 <select id="timeInput" style="padding: 10px; border: 2px solid var(--secondary); border-radius: 12px; font-size: 1.1rem; color: var(--text); font-family: 'Fredoka', sans-serif; min-width: 200px;">
@@ -130,7 +131,7 @@ function render() {
         .catch(err => console.error('Error sending data:', err));
 
         stepContainer.innerHTML = `
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXZ0Z3F2bmE1ZzB5dWU3aWtkMGh2dnRzeWRxZWtzbnZ2N2x0ZzV1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Happy cat" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
+            <img src="https://media.tenor.com/Hbd1T1W3R5UAAAAi/cat-driving.gif" alt="Cool cat driving" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
             <h1>It's a Date! ❤️🎉</h1>
             <p style="font-size: 1.3rem; margin-bottom: 15px; color: var(--primary); font-weight: bold;">Glad you didn't say no. I'm coming to get you! 🏎️💨</p>
             <p>Here is our perfect plan:</p>
@@ -167,7 +168,7 @@ function setupNoButton() {
 
     const moveButton = () => {
         // Change GIF to monkey covering eyes when hovered
-        gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJyeXk3ZHBxY3MxcWh4NnpnZWVwbnUybWhnbDVoaDR6NmxoY2VyeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2vSk4vrZ7vwKk/giphy.gif";
+        gif.src = "https://media.tenor.com/n6t1_5_n_xIAAAAi/monkey-covering-eyes.gif";
 
         // Get viewport dimensions
         const viewportWidth = window.innerWidth;
@@ -191,7 +192,7 @@ function setupNoButton() {
 
     yesBtn.addEventListener('mouseover', () => {
         // Change GIF to heart cat when yes is hovered
-        gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDVtcXZtdTJkZ2lkdmYxbmR0NDF6eWN0MmNweWVjZWV2NmJ2NXJqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/T86i6yDyOYz7J6dPhf/giphy.gif";
+        gif.src = "https://media.tenor.com/ZmWGeN1Wn4AAAAAi/cat-love.gif";
     });
 
     noBtn.addEventListener('mouseover', moveButton);
