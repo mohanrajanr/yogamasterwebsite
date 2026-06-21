@@ -35,6 +35,12 @@ const activities = [
     { id: 'talk', label: 'Just Talk & Chill 🗣️' }
 ];
 
+const timeOptions = [
+    { value: "6:00 PM", label: "6:00 PM - Right time to go! 🌅" },
+    { value: "7:00 PM", label: "7:00 PM - Hungry already! 😋" },
+    { value: "8:00 PM", label: "8:00 PM - Way too hungry!! 💀" }
+];
+
 function render() {
     app.innerHTML = '';
     const stepContainer = document.createElement('div');
@@ -42,27 +48,41 @@ function render() {
 
     if (state.step === 0) {
         stepContainer.innerHTML = `
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExajFkczQ3czJtYmtlZjF6aTBuZWVzN2V2OTBldnI0bnRxM2w1eWhlciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/GeimqsH0TLDt4tScGw/giphy.gif" alt="Excited cat" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
             <h1>Hey there! 👋</h1>
             <p style="margin-bottom: 20px; font-size: 1.2rem;">I have a very important question to ask you...</p>
-            <button onclick="nextStep()">What is it?</button>
+            <button onclick="nextStep(1)">What is it?</button>
         `;
     } else if (state.step === 1) {
         stepContainer.innerHTML = `
+            <img id="step1Gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHhwcGQ1YmI5bW1weWVhZHJtbTFsM3l2cm4yeGlkbThvMjRkM3k5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qUIm5wu6LAAEQ/giphy.gif" alt="Pleading cat" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
             <h1>Will you go on a date with me? 🥺</h1>
             <div class="button-group" id="btn-group">
-                <button id="yesBtn" onclick="nextStep()">YES!</button>
+                <button id="yesBtn" onclick="nextStep(1.5)">YES!</button>
                 <button id="noBtn">No</button>
             </div>
         `;
         app.appendChild(stepContainer);
         setupNoButton();
         return; // already appended
+    } else if (state.step === 1.5) {
+        stepContainer.innerHTML = `
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDVtcXZtdTJkZ2lkdmYxbmR0NDF6eWN0MmNweWVjZWV2NmJ2NXJqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Heart cat" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
+            <h1>Are you REALLY sure? No takebacks! 💞</h1>
+            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+                <button onclick="nextStep(2)">YES!</button>
+                <button onclick="nextStep(2)">OBVIOUSLY YES!</button>
+            </div>
+        `;
     } else if (state.step === 2) {
         stepContainer.innerHTML = `
             <h1>Yay! 🎉 When are we going?</h1>
             <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
                 <input type="date" id="dateInput" required>
-                <input type="time" id="timeInput" required>
+                <select id="timeInput" style="padding: 10px; border: 2px solid var(--secondary); border-radius: 12px; font-size: 1.1rem; color: var(--text); font-family: 'Fredoka', sans-serif; min-width: 200px;">
+                    <option value="">Select a time...</option>
+                    ${timeOptions.map(t => `<option value="${t.value}">${t.label}</option>`).join('')}
+                </select>
             </div>
             <button class="next-btn" onclick="saveDateTime()">Next ➡️</button>
         `;
@@ -110,7 +130,9 @@ function render() {
         .catch(err => console.error('Error sending data:', err));
 
         stepContainer.innerHTML = `
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXZ0Z3F2bmE1ZzB5dWU3aWtkMGh2dnRzeWRxZWtzbnZ2N2x0ZzV1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Happy cat" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
             <h1>It's a Date! ❤️🎉</h1>
+            <p style="font-size: 1.3rem; margin-bottom: 15px; color: var(--primary); font-weight: bold;">Glad you didn't say no. I'm coming to get you! 🏎️💨</p>
             <p>Here is our perfect plan:</p>
             <div class="summary">
                 <p><strong>When:</strong> ${state.date} at ${state.time}</p>
@@ -118,27 +140,35 @@ function render() {
                 <p><strong>Eating:</strong> ${state.food}</p>
                 <p><strong>After:</strong> ${state.activity}</p>
             </div>
-            <p style="margin-top: 20px; font-size: 1.2rem;">Can't wait to see you! 😍</p>
+            <p style="margin-top: 20px; font-size: 1.2rem;">Can't wait! 😍</p>
         `;
     }
 
     app.appendChild(stepContainer);
 }
 
-function nextStep() {
-    state.step++;
+function nextStep(step) {
+    if (step !== undefined) {
+        state.step = step;
+    } else {
+        state.step++;
+    }
     render();
 }
 
 function setupNoButton() {
     const noBtn = document.getElementById('noBtn');
-    const group = document.getElementById('btn-group');
+    const yesBtn = document.getElementById('yesBtn');
+    const gif = document.getElementById('step1Gif');
     
     // Position the 'No' button initially next to 'Yes'
     noBtn.style.left = '60%';
     noBtn.style.top = '25%';
 
     const moveButton = () => {
+        // Change GIF to monkey covering eyes when hovered
+        gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJyeXk3ZHBxY3MxcWh4NnpnZWVwbnUybWhnbDVoaDR6NmxoY2VyeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2vSk4vrZ7vwKk/giphy.gif";
+
         // Get viewport dimensions
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
@@ -159,6 +189,11 @@ function setupNoButton() {
         noBtn.style.top = randomTop + 'px';
     };
 
+    yesBtn.addEventListener('mouseover', () => {
+        // Change GIF to heart cat when yes is hovered
+        gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDVtcXZtdTJkZ2lkdmYxbmR0NDF6eWN0MmNweWVjZWV2NmJ2NXJqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/T86i6yDyOYz7J6dPhf/giphy.gif";
+    });
+
     noBtn.addEventListener('mouseover', moveButton);
     noBtn.addEventListener('click', moveButton); // For mobile/touch
 }
@@ -174,7 +209,7 @@ function saveDateTime() {
     
     state.date = date;
     state.time = time;
-    nextStep();
+    nextStep(3);
 }
 
 function selectOption(key, value, element) {
@@ -195,7 +230,10 @@ function checkAndNext(key) {
         alert("Please pick an option!");
         return;
     }
-    nextStep();
+    
+    if (state.step === 3) nextStep(4);
+    else if (state.step === 4) nextStep(5);
+    else if (state.step === 5) nextStep(6);
 }
 
 // Initial render
