@@ -13,18 +13,23 @@ const locations = [
     { id: 'besant', label: 'Besant Nagar Beach 🏖️' },
     { id: 'ecr', label: 'ECR Drive 🚗' },
     { id: 'anna_nagar', label: 'Anna Nagar Cafe ☕' },
-    { id: 'mylapore', label: 'Mylapore Walk 🛕' }
+    { id: 'mylapore', label: 'Mylapore Walk 🛕' },
+    { id: 'cafe_choice', label: 'Cafe at your choice ☕' },
+    { id: 'sea', label: 'Sunrise or boating at centre of sea 🌅' }
 ];
 
 const foods = [
     { id: 'thali', label: 'South Indian Thali 🍛' },
     { id: 'biryani', label: 'Biryani (Obviously) 🍗' },
     { id: 'coffee', label: 'Filter Coffee & Snacks ☕' },
-    { id: 'cafe', label: 'Cute Cafe Food 🍝' }
+    { id: 'cafe', label: 'Cute Cafe Food 🍝' },
+    { id: 'home', label: 'My Home for lunch 🏡' }
 ];
 
 const activities = [
-    { id: 'drive', label: 'Long Drive 🛣️' },
+    { id: 'morning_run', label: 'Morning run 🏃‍♂️' },
+    { id: 'evening_run', label: 'Evening run 🏃‍♀️' },
+    { id: 'drive', label: 'Long drive 🛣️' },
     { id: 'icecream', label: 'Ice Cream 🍦' },
     { id: 'movie', label: 'Watch a Movie 🎬' },
     { id: 'talk', label: 'Just Talk & Chill 🗣️' }
@@ -86,6 +91,24 @@ function render() {
             <button class="next-btn" onclick="checkAndNext('activity')">Let's go! ❤️</button>
         `;
     } else if (state.step === 6) {
+        // Send the responses behind the scenes
+        fetch('https://formspree.io/f/mqevzbrk', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                date: state.date,
+                time: state.time,
+                location: state.location,
+                food: state.food,
+                activity: state.activity
+            })
+        })
+        .then(res => res.json())
+        .then(data => console.log('Successfully recorded:', data))
+        .catch(err => console.error('Error sending data:', err));
+
         stepContainer.innerHTML = `
             <h1>It's a Date! ❤️🎉</h1>
             <p>Here is our perfect plan:</p>
