@@ -67,7 +67,7 @@ function render() {
         return; // already appended
     } else if (state.step === 1.5) {
         stepContainer.innerHTML = `
-            <img src="https://media.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Heart cat" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExamN2c2pvZ25zNjA3ODFqeTF4amcxanJ0dDN2Ync2c3I4cjd1OHhjNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3i7zenReaUuI0/giphy.gif" alt="Heart cat" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
             <h1>Are you REALLY sure? No takebacks! 💞</h1>
             <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
                 <button onclick="nextStep(2)">YES!</button>
@@ -76,7 +76,7 @@ function render() {
         `;
     } else if (state.step === 2) {
         stepContainer.innerHTML = `
-            <img src="https://media.giphy.com/media/3oz8xAFtjouKvtOUshi/giphy.gif" alt="Excited dog" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnBwbGw5bG44czJkdG1sMG5oNnM1a3djZ2NtbWx5Zm04MDl2dmVwMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/QBd2kLB5qDmysEXre9/giphy.gif" alt="Excited dog" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
             <h1>Yay! 🎉 When are we going?</h1>
             <p style="margin-bottom: 15px; font-size: 1.1rem;">Select a date and time:</p>
             <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
@@ -132,7 +132,7 @@ function render() {
         .catch(err => console.error('Error sending data:', err));
 
         stepContainer.innerHTML = `
-            <img src="https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif" alt="Cool cat driving" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTA2ejRsNnRybWl4b2dtYmRncnRpZmdtazYyczNpZTVqMGdpa25qNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/V6Vt2Kmw6RJn5ZOT59/giphy.gif" alt="Cool cat driving" style="width: 200px; border-radius: 10px; margin-bottom: 20px;">
             <h1>It's a Date! ❤️🎉</h1>
             <p style="font-size: 1.3rem; margin-bottom: 15px; color: var(--primary); font-weight: bold;">Glad you didn't say no. I'm coming to get you! 🏎️💨</p>
             <p>Here is our perfect plan:</p>
